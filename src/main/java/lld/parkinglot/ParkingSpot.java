@@ -1,14 +1,14 @@
 package lld.parkinglot;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
 public abstract class ParkingSpot {
     private String id;
     private boolean spotAvailable;
     private Vehicle vehicle;
     private VehicleType vehicleType;
-
-    public boolean isSpotAvailable() {
-        return spotAvailable;
-    }
 
     public ParkingSpot(VehicleType vehicleType) {
         this.vehicleType = vehicleType;
@@ -20,7 +20,7 @@ public abstract class ParkingSpot {
         return true;
     }
 
-    public boolean removeVehicle(Vehicle vehicle) {
+    public boolean removeVehicle() {
         this.vehicle = null;
         spotAvailable = true;
         return true;
