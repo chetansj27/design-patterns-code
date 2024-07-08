@@ -15,4 +15,4 @@
 
 ### UML Diagram
 
-![UML Diagram](UMlDiagram.drawio.svg)
+![UML Diagram](UMLDiagram.drawio.svg)
