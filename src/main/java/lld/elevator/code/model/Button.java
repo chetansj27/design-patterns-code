@@ -1,9 +1,11 @@
 package lld.elevator.code.model;
 
-public class Button {
+public interface Button {
     //for External Button
-    public void pressButton(int floor, Direction dir){}
+    default void pressButton(int floor, Direction dir) {
+    }
 
     //for Internal Button
-    public void pressButton(int floor, Direction dir, int elevatorId){}
+    default void pressButton(int floor, int elevatorId, Direction dir) {
+    }
 }

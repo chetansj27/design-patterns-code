@@ -1,22 +1,15 @@
 package lld.elevator.code.model;
 
 public class ExternalDispatcher {
+    ElevatorSystem observer;
     public static ExternalDispatcher INSTANCE = new ExternalDispatcher();
-    private ExternalDispatcher()
-    {
 
+    public ExternalDispatcher() {
+        this.observer = ElevatorSystem.INSTANCE;
     }
 
-    public  void submitRequest(int floor, Direction dir)
-    {
-        int elevatorId= ElevatorSystem.elevatorSelectionStrategy.selectElevator(floor, dir);
-        System.out.println("Selected elevator " + elevatorId);
-        for(ElevatorController eController: ElevatorSystem.INSTANCE.getElevatorControllerList())
-        {
-            if(eController.getId()== elevatorId)
-            {
-                eController.acceptRequest(floor, dir);
-            }
-        }
+
+    public void submitRequest(int floor, Direction dir) {
+        observer.notifyRequest(floor, dir);
     }
 }

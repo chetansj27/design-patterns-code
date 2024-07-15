@@ -1,23 +1,14 @@
 package lld.elevator.code.model;
 
-import lombok.Getter;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class InternalButton extends Button {
-    private InternalDispatcher idispatcher;
-    @Getter
-    private List<Integer> floors = new ArrayList<Integer>();
+public class InternalButton implements Button {
+    private InternalDispatcher idispatcher = InternalDispatcher.INSTANCE;
 
     public InternalButton() {
-        idispatcher = new InternalDispatcher();
     }
 
-    public void pressButton(int floor, Direction dir, int elevatorId) {
-
-        floors.add(floor);
+    @Override
+    public void pressButton(int floor, int elevatorId, Direction dir) {
         System.out.println("Pressed floor " + floor + " from elevator " + elevatorId);
-        idispatcher.submitRequest(floor, dir, elevatorId);
+        idispatcher.submitRequest(floor, elevatorId, dir);
     }
 }

@@ -5,13 +5,13 @@ import lombok.Setter;
 
 @Getter
 public class ElevatorCar {
-    private int id;
-    private Door door;
-    private Display display;
-    private Button button;
+    private final int id;
+    private final Door door;
+    private final Display display;
+    private final Button button;
     @Setter
-    private int currentFloor;  //updated while elevator moves to each floor
-    private Direction dir; //updated every time elevator hanges direction
+    private int currentFloor;
+    private final Direction dir;
 
 
     public ElevatorCar(int id) {
@@ -41,7 +41,7 @@ public class ElevatorCar {
             dir = Direction.UP;
         else if (floor < currentFloor)
             dir = Direction.DOWN;
-        button.pressButton(floor, dir, id);
+        button.pressButton(floor, id, dir);
     }
 
 

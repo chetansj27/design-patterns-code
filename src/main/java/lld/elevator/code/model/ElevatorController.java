@@ -14,16 +14,10 @@ public class ElevatorController {
         elevatorCar = new ElevatorCar(id);
     }
 
-    public void acceptRequest(int floor, Direction dir) {
-        ElevatorSystem.elevatorControlStrategy.getPendingRequestList().add(new PendingRequests(floor, dir));
-
-        controlCar();
-    }
-
-    private void controlCar() {
-
-        ElevatorSystem.elevatorControlStrategy.moveElevator(this);
-        System.out.println("Elevator moving...");
+    public void moveToFloor(int floor) {
+        Direction dir = elevatorCar.getCurrentFloor() < floor ? Direction.UP : Direction.DOWN;
+        elevatorCar.move(dir, floor);
+        elevatorCar.setCurrentFloor(floor);
     }
 
 
